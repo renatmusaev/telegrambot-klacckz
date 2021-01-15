@@ -10,7 +10,7 @@ class MainController extends Controller
     public function index() {
 
         $telegram = Telegram::getWebHookUpdates();
-        if (!empty($telegram)) {
+        if (!$telegram->isEmpty()) {
             $chat_id = $telegram['message']['chat']['id'];
     
             Telegram::sendMessage([
