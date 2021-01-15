@@ -14,10 +14,31 @@ class MainController extends Controller
             $chat_id = $telegram['message']['chat']['id'];
             $text = $telegram['message']['text'];
     
-            Telegram::sendMessage([
-                'chat_id' => $chat_id,
-                'text' => $text." copy",
+            // Telegram::sendMessage([
+            //     'chat_id' => $chat_id,
+            //     'text' => $text." copy",
+            // ]);
+
+            $keyboard = [
+                ['7', '8', '9'],
+                ['4', '5', '6'],
+                ['1', '2', '3'],
+                     ['0']
+            ];
+            
+            $reply_markup = Telegram::replyKeyboardMarkup([
+                'keyboard' => $keyboard, 
+                'resize_keyboard' => true, 
+                'one_time_keyboard' => true
             ]);
+            
+            $response = Telegram::sendMessage([
+                'chat_id' => $chat_id, 
+                'text' => 'Hello World', 
+                'reply_markup' => $reply_markup
+            ]);
+            
+            $messageId = $response->getMessageId();
         } else {
             die("Empty");
         }
