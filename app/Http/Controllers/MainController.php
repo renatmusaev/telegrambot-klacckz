@@ -12,10 +12,11 @@ class MainController extends Controller
         $telegram = Telegram::getWebHookUpdates();
         if (!$telegram->isEmpty()) {
             $chat_id = $telegram['message']['chat']['id'];
+            $text = $telegram['message']['text'];
     
             Telegram::sendMessage([
                 'chat_id' => $chat_id,
-                'text' => 'Hello!'
+                'text' => $text." copy",
             ]);
         } else {
             die("Empty");
