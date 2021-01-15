@@ -9,13 +9,13 @@ class MainController extends Controller
 {
     public function index() {
 
-        $telegram = Telegram::getWebHookUpdates();
-        $chat_id = $telegram['message']['chat']['id'];
+        // $telegram = Telegram::getWebHookUpdates();
+        // $chat_id = $telegram['message']['chat']['id'];
 
-        Telegram::sendMessage([
-            'chat_id' => $chat_id,
-            'text' => 'Hello!'
-        ]);
+        // Telegram::sendMessage([
+        //     'chat_id' => $chat_id,
+        //     'text' => 'Hello!'
+        // ]);
 
         // $response = Telegram::getMe();
         // $botId = $response->getId();
